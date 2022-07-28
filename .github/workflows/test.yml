@@ -1,0 +1,26 @@
+name: Test
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  jdk_versions_matrix:
+    strategy:
+      matrix:
+        version: [11, 17]
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3.0.2
+      - uses: actions/setup-java@v3.4.1
+        with:
+          java-version: ${{ matrix.version }}
+          distribution: 'temurin'
+          java-package: jdk
+          architecture: x64
+
+      - name: Build with Gradle
+        run: JDK_VERSION=${{ matrix.version }} ./gradlew build --info
