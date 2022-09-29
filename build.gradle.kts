@@ -14,7 +14,7 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib"))
 
-    testImplementation("io.mockk:mockk:1.12.5")
+    testImplementation("io.mockk:mockk:1.13.2")
 
     testImplementation(platform("org.junit:junit-bom:5.9.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
